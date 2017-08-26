@@ -12,13 +12,18 @@
   </v-container>
 -->
 <v-container>
+
   <v-layout row>
     <v-flex xs12>
-      <v-btn @click.prevent='onClickPolys'>
-        Create PolyLines
-      </v-btn>
+      <gmap-map
+        :center="{lat:25.649074, lng:-100.289904}"
+        :zoom="15"
+        map-type-id="terrain"
+        style="max-width: 100%; height: 400px"
+      ></gmap-map>
     </v-flex>
   </v-layout>
+
 </v-container>
 </template>
 

@@ -1,7 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import * as firebase from 'firebase'
+import * as VueGoogleMaps from 'vue2-google-maps'
+
 Vue.use(Vuex)
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyDR5bQYfgy8f3Rz1RxZbkZLfgMd-4TYjl4',
+    v: '3',
+    libraries: 'places'
+  }
+})
 
 export const store = new Vuex.Store({
   state: {
