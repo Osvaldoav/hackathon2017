@@ -54,7 +54,10 @@ export const store = new Vuex.Store({
       firebase.database().ref('camiones').on('value', (data) => {
         let miPos = null
         const obj = data.val()
-        miPos = {lat: obj['ubicacion']['latitude'], lng: obj['ubicacion']['longitude']}
+        miPos = [{lat: obj['1']['ubicacion']['latitude'], lng: obj['1']['ubicacion']['longitude']},
+          {lat: obj['2']['ubicacion']['latitude'], lng: obj['2']['ubicacion']['longitude']},
+          {lat: obj['3']['ubicacion']['latitude'], lng: obj['3']['ubicacion']['longitude']}
+        ]
         commit('setPosicion', miPos)
       })
     },
@@ -63,7 +66,10 @@ export const store = new Vuex.Store({
       firebase.database().ref('camiones').on('value', (data) => {
         let miCap = null
         const obj = data.val()
-        miCap = obj['pasajeros']['actual']
+        miCap = [obj['1']['pasajeros']['actual'],
+          obj['2']['pasajeros']['actual'],
+          obj['3']['pasajeros']['actual']
+        ]
         commit('setCapacidad', miCap)
       })
     },
