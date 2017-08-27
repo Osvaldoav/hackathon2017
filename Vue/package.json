@@ -13,8 +13,11 @@
   "dependencies": {
     "decode-google-map-polyline": "^1.0.1",
     "firebase": "^4.3.0",
+    "loadash": "^1.0.0",
     "vue": "^2.4.2",
     "vue-router": "^2.6.0",
+    "vue2-google-maps": "^0.8.0",
+    "vuefire": "^1.4.3",
     "vuetify": "^0.14.11",
     "vuex": "^2.3.1"
   },
