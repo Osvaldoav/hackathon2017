@@ -15,12 +15,27 @@
 
   <v-layout row>
     <v-flex xs12>
+      <v-btn @click.stop="imprimirConsola"> Ruta 1 </v-btn>
+      <v-btn @click.stop="imprimirConsola"> Ruta 2 </v-btn>
+      <v-btn @click.stop="imprimirConsola"> Ruta 3 </v-btn>
+    </v-flex>
+  </v-layout>
+
+  <v-layout row>
+    <v-flex xs12>
       <gmap-map
         :center="{lat:25.649074, lng:-100.289904}"
         :zoom="15"
         map-type-id="terrain"
         style="max-width: 100%; height: 400px"
-      ></gmap-map>
+      >
+      <gmap-polyline
+      :clickable="false"
+      :draggable="false"
+      :path="path1"
+      >
+      </gmap-polyline>
+      </gmap-map>
     </v-flex>
   </v-layout>
 
@@ -38,9 +53,19 @@
         ]
       }
     },
+
+    computed: {
+      path1 () {
+        return this.$store.getters.getRuta
+      }
+    },
+
     methods: {
       onClickPolys () {
         this.$store.dispatch('uploadPoly')
+      },
+      imprimirConsola () {
+        this.$store.dispatch('loadRuta')
       }
     }
   }
