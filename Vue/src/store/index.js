@@ -19,7 +19,8 @@ export const store = new Vuex.Store({
     user: null,
     loading: false,
     authError: null,
-    ruta: null
+    ruta: null,
+    posicion: null
   },
   mutations: {
     setUser (state, payload) {
@@ -38,21 +39,33 @@ export const store = new Vuex.Store({
       console.log(payload.line)
       state.ruta = decodePolyline(payload.line)
       console.log(state.ruta)
+    },
+    setPosicion (state, payload) {
+      state.posicion = payload
     }
   },
   actions: {
+
+    loadPosicion ({commit}) {
+      firebase.database().ref('camiones').on('value', (data) => {
+        let miPos = null
+        const obj = data.val()
+        miPos = {lat: obj['ubicacion']['latitude'], lng: obj['ubicacion']['longitude']}
+        commit('setPosicion', miPos)
+      })
+    },
 
     imprimirRuta (state) {
       console.log(state.ruta)
     },
 
-    loadRuta ({commit}) {
+    loadRuta ({commit}, payload) {
       firebase.database().ref('polylines').once('value')
         .then((data) => {
           let miRuta = null
           const obj = data.val()
           for (let key in obj) {
-            if (key === '-KsVA6quWllUBdZ3vt_0') {
+            if (key === payload) {
               miRuta = obj[key]
             }
           }
@@ -104,6 +117,9 @@ export const store = new Vuex.Store({
     },
     getRuta (state) {
       return state.ruta
+    },
+    posCamion (state) {
+      return state.posicion
     }
   }
 })

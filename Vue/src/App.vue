@@ -20,7 +20,7 @@
       <!-- adding hamburguer icon -->
       <v-toolbar-side-icon dark @click.stop="sideNav = !sideNav"></v-toolbar-side-icon>
       <v-toolbar-title class="white--text">
-        <router-link to="/" tag="span" style="cursor: pointer" >RutaHack2017</router-link>
+        <router-link to="/" tag="span" style="cursor: pointer" >MiCircuitoTec</router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>

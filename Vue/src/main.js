@@ -22,5 +22,6 @@ new Vue({
       projectId: 'hack-mty-2017',
       storageBucket: 'hack-mty-2017.appspot.com'
     })
+    this.$store.dispatch('loadPosicion')
   }
 })
