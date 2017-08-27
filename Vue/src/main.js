@@ -22,6 +22,11 @@ new Vue({
       projectId: 'hack-mty-2017',
       storageBucket: 'hack-mty-2017.appspot.com'
     })
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.$store.dispatch('autoSignin', user)
+      }
+    })
     this.$store.dispatch('loadPosicion')
     this.$store.dispatch('loadCapacidad')
   }

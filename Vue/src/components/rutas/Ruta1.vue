@@ -15,9 +15,9 @@
 
   <v-layout row>
     <v-flex xs12>
-      <v-btn @click.stop="imprimirConsola(keys[0])"> Ruta 1 </v-btn>
-      <v-btn @click.stop="imprimirConsola(keys[1])"> Ruta 2 </v-btn>
-      <v-btn @click.stop="imprimirConsola(keys[2])"> Ruta 3 </v-btn>
+      <v-btn @click.stop="imprimirConsola(keys[0])"> R-1 </v-btn>
+      <v-btn @click.stop="imprimirConsola(keys[1])"> Ruta Hospitales (Circuito Tec) </v-btn>
+      <v-btn @click.stop="imprimirConsola(keys[2])"> R-209 </v-btn>
     </v-flex>
   </v-layout>
 

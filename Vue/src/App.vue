@@ -13,6 +13,14 @@
           <!-- the content is the text -->
           <v-list-tile-content>{{ item.title }}</v-list-tile-content>
         </v-list-tile>
+        <v-list-tile @click.stop="onLogout" v-if="isAuthenticated">
+          <!-- the action is the icon of the row -->
+          <v-list-tile-action>
+            <v-icon>exit_to_app</v-icon>
+          </v-list-tile-action>
+          <!-- the content is the text -->
+          <v-list-tile-content>Logout</v-list-tile-content>
+        </v-list-tile>
       </v-list>
     </v-navigation-drawer>
 
@@ -28,6 +36,10 @@
           {{ item.title }}
           <v-icon right dark>{{ item.icon }}</v-icon>
         </v-btn>
+        <v-btn flat v-if="isAuthenticated" @click.stop="onLogout">
+          Logout
+          <v-icon right dark>exit_to_app</v-icon>
+        </v-btn>
       </v-toolbar-items>
     </v-toolbar>
 
@@ -42,14 +54,6 @@
     data () {
       return {
         sideNav: false
-        /*
-        menuItems: [
-          { icon: 'perm_identity', title: 'Perfil', link: '/profile' },
-          { icon: 'directions_bus', title: 'Rutas', link: '/ruta/1' },
-          { icon: 'face', title: 'Sign up', link: '/signup' },
-          { icon: 'lock_open', title: 'Sign in', link: '/signin' }
-        ]
-        */
       }
     },
     computed: {
@@ -69,6 +73,11 @@
       },
       isAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      }
+    },
+    methods: {
+      onLogout () {
+        this.$store.dispatch('logout')
       }
     }
   }
