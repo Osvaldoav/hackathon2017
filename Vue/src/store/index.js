@@ -20,7 +20,8 @@ export const store = new Vuex.Store({
     loading: false,
     authError: null,
     ruta: null,
-    posicion: null
+    posicion: null,
+    capacidad: null
   },
   mutations: {
     setUser (state, payload) {
@@ -42,6 +43,9 @@ export const store = new Vuex.Store({
     },
     setPosicion (state, payload) {
       state.posicion = payload
+    },
+    setCapacidad (state, payload) {
+      state.capacidad = payload
     }
   },
   actions: {
@@ -52,6 +56,15 @@ export const store = new Vuex.Store({
         const obj = data.val()
         miPos = {lat: obj['ubicacion']['latitude'], lng: obj['ubicacion']['longitude']}
         commit('setPosicion', miPos)
+      })
+    },
+
+    loadCapacidad ({commit}) {
+      firebase.database().ref('camiones').on('value', (data) => {
+        let miCap = null
+        const obj = data.val()
+        miCap = obj['pasajeros']['actual']
+        commit('setCapacidad', miCap)
       })
     },
 
@@ -120,6 +133,9 @@ export const store = new Vuex.Store({
     },
     posCamion (state) {
       return state.posicion
+    },
+    capCamion (state) {
+      return state.capacidad
     }
   }
 })

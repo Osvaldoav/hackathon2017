@@ -23,5 +23,6 @@ new Vue({
       storageBucket: 'hack-mty-2017.appspot.com'
     })
     this.$store.dispatch('loadPosicion')
+    this.$store.dispatch('loadCapacidad')
   }
 })

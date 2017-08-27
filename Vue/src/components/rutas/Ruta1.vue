@@ -38,10 +38,31 @@
       <gmap-marker
       :clickable="false"
       :draggable="false"
-      icon="https://firebasestorage.googleapis.com/v0/b/hack-mty-2017.appspot.com/o/Imagen1.png?alt=media&token=1f94bbd8-3510-48c6-a19b-779d34c2a7a0"
+      icon="https://firebasestorage.googleapis.com/v0/b/hack-mty-2017.appspot.com/o/verde.png?alt=media&token=fd18cb7f-cd63-422b-9ad2-87e927beff23"
       :opacity="1"
       :position="posicionCamion"
       :visible="true"
+      v-if="capacidadCamion < 10"
+      >
+      </gmap-marker>
+      <gmap-marker
+      :clickable="false"
+      :draggable="false"
+      icon="https://firebasestorage.googleapis.com/v0/b/hack-mty-2017.appspot.com/o/amarillo.png?alt=media&token=e300f3ef-65b7-4897-bc8b-6c7d71c6e6d5"
+      :opacity="1"
+      :position="posicionCamion"
+      :visible="true"
+      v-else-if="capacidadCamion < 20"
+      >
+      </gmap-marker>
+      <gmap-marker
+      :clickable="false"
+      :draggable="false"
+      icon="https://firebasestorage.googleapis.com/v0/b/hack-mty-2017.appspot.com/o/rojo.png?alt=media&token=26b6055c-da0a-4c31-ade6-682baa22cc3a"
+      :opacity="1"
+      :position="posicionCamion"
+      :visible="true"
+      v-else
       >
       </gmap-marker>
       </gmap-map>
@@ -70,6 +91,9 @@
       },
       posicionCamion () {
         return this.$store.getters.posCamion
+      },
+      capacidadCamion () {
+        return this.$store.getters.capCamion
       }
     },
 
