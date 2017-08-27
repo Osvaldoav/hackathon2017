@@ -21,7 +21,8 @@ export const store = new Vuex.Store({
     authError: null,
     ruta: null,
     posicion: null,
-    capacidad: null
+    capacidad: null,
+    rutaActual: null
   },
   mutations: {
     setUser (state, payload) {
@@ -46,6 +47,9 @@ export const store = new Vuex.Store({
     },
     setCapacidad (state, payload) {
       state.capacidad = payload
+    },
+    setRutaActual (state, payload) {
+      state.rutaActual = payload
     }
   },
   actions: {
@@ -95,6 +99,10 @@ export const store = new Vuex.Store({
             console.log(error)
           }
         )
+    },
+
+    loadRutaActual ({commit}, payload) {
+      commit('setRutaActual', payload)
     },
 
     signUpUser ({commit}, payload) {
@@ -149,6 +157,9 @@ export const store = new Vuex.Store({
     },
     capCamion (state) {
       return state.capacidad
+    },
+    rutActual (state) {
+      return state.rutaActual
     }
   }
 })
